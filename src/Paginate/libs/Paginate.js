@@ -174,7 +174,7 @@ Paginate.prototype._countPages = function() {
     if( self.pageCount === -1 ) {
       var max = self.max;
       var pageSize = self.pageSize;
-      var ref = this.ref.ref().limitToFirst(max);
+      var ref = this.ref.ref().limitToLast(max);
       ref.once('value', function(snap) {
         if( self.pageCount === -1 ) { // double-null check pattern (may have changed during async op)
           self.couldHaveMore = snap.numChildren() === max;

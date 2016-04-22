@@ -75,7 +75,7 @@ Offset.prototype._grow = function(callback) {
     var startAt = lastKey(self.keys);
     var limit = Math.min(self.curr + (startAt? 2 : 1) - len, self.max);
     var ref = startAt !== null? self.ref.startAt(startAt.val, startAt.key) : self.ref;
-    ref.limitToFirst(limit).once('value', function(snap) {
+    ref.limitToLast(limit).once('value', function(snap) {
       var skipFirst = startAt !== null;
       snap.forEach(function(ss) {
         if( skipFirst ) {
@@ -114,7 +114,7 @@ Offset.prototype._queryRef = function() {
     var key = this.getKey(start);
     ref = ref.startAt(key.val, key.key);
   }
-  return ref.limitToLast(Math.max(this.curr - start, 1));
+  return ref.limitToFirst(Math.max(this.curr - start, 1));
 };
 
 Offset.prototype._moved = function(snap) {
@@ -165,7 +165,7 @@ Offset.prototype._monitorEmptyOffset = function() {
     ref = ref.startAt(key.val, key.key);
   }
   util.log.debug('Offset._monitorEmptyOffset: No value exists at offset %d, currently %d keys at this path. Watching for a new value.', this.curr, this.keys.length);
-  ref.limitToFirst(2).on('value', fn);
+  ref.limitToLast(2).on('value', fn);
 };
 
 Offset.prototype._listen = function() {

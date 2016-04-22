@@ -141,36 +141,6 @@ describe('Query', function() {
     it('returns results ordered by priority'); //todo-test
   });
 
-  describe('#limitToFirst', function () {
-    it('returns a Query', function() {
-      // we need to use real paths or the Transmogrifier will fail
-      // since it uses instanceof Path, so we'll inject them here
-      var paths = _.map(hp.stubPaths(), function(p) {
-        return new Path([p.ref(), p.name(), p.getDependency()]);
-      });
-      var ref = hp.stubNormRef(paths);
-      var q = new Query(ref, ref.$getRecord());
-      expect(q.limitToFirst()).toBeInstanceOf(Query);
-    });
-
-    it('calls limitToFirst on master ref', function() {
-      // we need to use real paths or the Transmogrifier will fail
-      // since it uses instanceof Path, so we'll inject them here
-      var paths = _.map(hp.stubPaths(), function(p) {
-        return new Path([p.ref(), p.name(), p.getDependency()]);
-      });
-      var nref = hp.stubNormRef(paths);
-      var masterRef = nref.$getMaster();
-      spyOn(masterRef, 'limitToFirst').and.callThrough();
-      var q = new Query(nref, nref.$getRecord());
-      q.limitToFirst();
-      expect(masterRef.limitToFirst).toHaveBeenCalled();
-    });
-
-    //todo-test requires MockFirebase upgrade to 2.0, see https://github.com/katowulf/mockfirebase/issues/39
-    it('returns the first n results'); //todo-test
-  });
-
   describe('#limitToLast', function () {
     it('returns a Query', function() {
       // we need to use real paths or the Transmogrifier will fail
@@ -195,6 +165,36 @@ describe('Query', function() {
       var q = new Query(nref, nref.$getRecord());
       q.limitToLast();
       expect(masterRef.limitToLast).toHaveBeenCalled();
+    });
+
+    //todo-test requires MockFirebase upgrade to 2.0, see https://github.com/katowulf/mockfirebase/issues/39
+    it('returns the first n results'); //todo-test
+  });
+
+  describe('#limitToFirst', function () {
+    it('returns a Query', function() {
+      // we need to use real paths or the Transmogrifier will fail
+      // since it uses instanceof Path, so we'll inject them here
+      var paths = _.map(hp.stubPaths(), function(p) {
+        return new Path([p.ref(), p.name(), p.getDependency()]);
+      });
+      var ref = hp.stubNormRef(paths);
+      var q = new Query(ref, ref.$getRecord());
+      expect(q.limitToFirst()).toBeInstanceOf(Query);
+    });
+
+    it('calls limitToFirst on master ref', function() {
+      // we need to use real paths or the Transmogrifier will fail
+      // since it uses instanceof Path, so we'll inject them here
+      var paths = _.map(hp.stubPaths(), function(p) {
+        return new Path([p.ref(), p.name(), p.getDependency()]);
+      });
+      var nref = hp.stubNormRef(paths);
+      var masterRef = nref.$getMaster();
+      spyOn(masterRef, 'limitToFirst').and.callThrough();
+      var q = new Query(nref, nref.$getRecord());
+      q.limitToFirst();
+      expect(masterRef.limitToFirst).toHaveBeenCalled();
     });
 
     //todo-test requires MockFirebase upgrade to 2.0, see https://github.com/katowulf/mockfirebase/issues/39

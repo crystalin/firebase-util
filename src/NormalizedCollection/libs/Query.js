@@ -73,12 +73,12 @@ Query.prototype = {
     return this.$replicate('orderByPriority', util.toArray(arguments));
   },
 
-  'limitToFirst': function() {
-    return this.$replicate('limitToFirst', util.toArray(arguments));
-  },
-
   'limitToLast': function() {
     return this.$replicate('limitToLast', util.toArray(arguments));
+  },
+
+  'limitToFirst': function() {
+    return this.$replicate('limitToFirst', util.toArray(arguments));
   },
 
   /** @deprecated */

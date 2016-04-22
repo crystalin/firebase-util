@@ -7,8 +7,8 @@ describe('NormalizedCollection', function() {
   describe('<constructor>', function() {
     it('should accept a query as a parameter', function() {
       var fb = hp.liveRef();
-      var q = fb.child('foo').orderByChild('number').limitToLast(10);
-      var r = fb.child('bar').orderByChild('string').limitToFirst(5);
+      var q = fb.child('foo').orderByChild('number').limitToFirst(10);
+      var r = fb.child('bar').orderByChild('string').limitToLast(5);
       expect(function() {
         new NormalizedCollection(q, r).select('foo.string', 'bar.number').ref();
       }).not.toThrowError();

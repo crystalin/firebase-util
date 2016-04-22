@@ -273,7 +273,7 @@ the original ref object. For example
 ### Unsupported methods (throws an error if called)
 
 `set`, `update`, `remove`, `push`, `setWithPriority`, `setPriority`, `transaction`, `limit`,
-`onDisconnect`, `orderByChild`, `orderByKey`, `orderByPriority`, `limitToFirst`, `limitToLast`,
+`onDisconnect`, `orderByChild`, `orderByKey`, `orderByPriority`, `limitToLast`, `limitToFirst`,
 `startAt`, `endAt`, `equalTo`
 
 Note that while these methods are not supported on the paginated or scrolled references, they will

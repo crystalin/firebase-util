@@ -301,7 +301,7 @@ a NormalizedRef.
 
 #### Query methods
 
-All query methods (e.g. `orderByChild()`, `orderByKey()`, `limitToFirst()`, et al) are applied to
+All query methods (e.g. `orderByChild()`, `orderByKey()`, `limitToLast()`, et al) are applied to
 the master index (the first path specified in the constructor).
 
 #### Authentication methods

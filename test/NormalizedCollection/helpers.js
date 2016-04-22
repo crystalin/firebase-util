@@ -622,11 +622,11 @@ function addTwoDotOhStubs(Firebase) {
       return this;
     },
 
-    'limitToFirst': function() {
+    'limitToLast': function() {
       return this;
     },
 
-    'limitToLast': function() {
+    'limitToFirst': function() {
       return this;
     },
 
